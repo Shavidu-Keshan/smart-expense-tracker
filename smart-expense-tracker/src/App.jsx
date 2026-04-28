@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Login from './pages/login';
 import Register from './pages/register';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/home';
+import Home from './pages/home';
 function App() {
   return (
      <BrowserRouter>
@@ -14,7 +15,8 @@ function App() {
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/*" element={<Home />} />
+
         </Routes>
       </div>
       

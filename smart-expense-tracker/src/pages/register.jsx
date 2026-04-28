@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock, FaWallet } from "react-icons/fa";
 import { data, useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 function Register() {
     const navigate = useNavigate();
@@ -18,16 +19,17 @@ function Register() {
       <div className="w-full max-w-md bg-slate-800 rounded-2xl shadow-2xl p-8 border border-slate-700">
 
         <div className="flex justify-center mb-5">
-          <div className="bg-blue-500 p-4 rounded-full">
-            <FaWallet className="text-white text-2xl" />
-          </div>
+          <img src={logo} alt="Smart Expense Tracker Logo" className="w-20 h-20 object-contain drop-shadow-md" />
         </div>
 
-        <h1 className="text-3xl font-bold text-white text-center">
-          Create Account
+        <h1 className="text-3xl font-extrabold text-white text-center tracking-tight">
+          Welcome to <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+            Smart Expense Tracker
+          </span>
         </h1>
-        <p className="text-slate-400 text-center mt-2 mb-8">
-          Start managing your money smartly
+        <p className="text-slate-400 text-center mt-3 mb-8 text-sm">
+          Create an account and start managing your money smartly
         </p>
 
         <form className="space-y-5">
