@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { FaHome, FaWallet, FaReceipt, FaChartBar, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaWallet, FaReceipt, FaChartBar, FaSignOutAlt, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 import Dashboard from "./home/dashboard";
@@ -11,6 +12,7 @@ export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   function getClass(name) {
     return path.includes(name)
@@ -23,34 +25,60 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white flex">
+    <div className="min-h-screen bg-[#0f172a] text-white flex flex-col md:flex-row relative">
+      {/* MOBILE HEADER */}
+      <div className="md:hidden flex items-center justify-between p-4 bg-slate-800 border-b border-slate-700 w-full z-50">
+        <div className="flex items-center gap-3">
+          <img src={logo} className="w-8 h-8" alt="Logo" />
+          <h1 className="text-lg font-bold">Smart Expense</h1>
+        </div>
+        <button 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="text-slate-300 hover:text-white p-2 focus:outline-none"
+        >
+          {isSidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+
+      {/* OVERLAY FOR MOBILE */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
 
       {/* SIDEBAR */}
-      <div className="w-[300px] bg-slate-800 border-r border-slate-700 flex flex-col justify-between">
+      <div className={`
+        fixed md:static inset-y-0 left-0 z-50 transform 
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        md:translate-x-0 transition-transform duration-300 ease-in-out
+        w-[280px] md:w-[300px] bg-slate-800 border-r border-slate-700 flex flex-col justify-between
+      `}>
 
         <div>
           {/* LOGO */}
-          <div className="p-6 flex items-center gap-3 border-b border-slate-700">
+          <div className="p-6 flex items-center gap-3 border-b border-slate-700 hidden md:flex">
             <img src={logo} className="w-10 h-10" />
             <h1 className="text-lg font-bold">Smart Expense</h1>
           </div>
 
           {/* LINKS */}
-          <div className="mt-4 flex flex-col gap-2 px-3">
+          <div className="mt-4 flex flex-col gap-2 px-3 pb-4">
 
-            <Link to="/dashboard" className={getClass("/dashboard")}>
+            <Link onClick={() => setIsSidebarOpen(false)} to="/dashboard" className={getClass("/dashboard")}>
               <FaHome /> Dashboard
             </Link>
 
-            <Link to="/income" className={getClass("/income")}>
+            <Link onClick={() => setIsSidebarOpen(false)} to="/income" className={getClass("/income")}>
               <FaWallet /> Income
             </Link>
 
-            <Link to="/outcome" className={getClass("/outcome")}>
+            <Link onClick={() => setIsSidebarOpen(false)} to="/outcome" className={getClass("/outcome")}>
               <FaReceipt /> Outcome
             </Link>
 
-            <Link to="/analytics" className={getClass("/analytics")}>
+            <Link onClick={() => setIsSidebarOpen(false)} to="/analytics" className={getClass("/analytics")}>
               <FaChartBar /> Analytics
             </Link>
 
