@@ -1,10 +1,10 @@
 import React from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-export default function RecentTransactions({ transactions }) {
+export default function RecentTransactions({ transactions, title = "Recent Transactions" }) {
     return (
         <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-lg mt-8">
-            <h3 className="text-xl font-bold text-white mb-4">Recent Transactions</h3>
+            <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
             <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                     <thead>
