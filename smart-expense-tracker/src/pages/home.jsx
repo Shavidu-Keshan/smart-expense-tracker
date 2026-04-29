@@ -15,10 +15,12 @@ export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   function getClass(name) {
-    return path.includes(name)
-      ? "flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-700 text-white"
-      : "flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-700 text-slate-300";
+  if (path.includes(name)) {
+    return "flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-700 text-white";
+  } else {
+    return "flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-700 text-slate-300";
   }
+}
 
   function handleLogout() {
     navigate("/login");

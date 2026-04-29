@@ -1,0 +1,7 @@
+[
+  { "id": 1, "title": "Salary", "type": "income", "amount": 5000, "date": "2026-04-20" },
+  { "id": 2, "title": "Groceries", "type": "expense", "amount": 150, "date": "2026-04-21" },
+  { "id": 3, "title": "Rent", "type": "expense", "amount": 1200, "date": "2026-04-22" },
+  { "id": 4, "title": "Freelance", "type": "income", "amount": 800, "date": "2026-04-24" },
+  { "id": 5, "title": "Internet Bill", "type": "expense", "amount": 60, "date": "2026-04-25" }
+]
